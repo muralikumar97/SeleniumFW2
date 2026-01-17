@@ -1,0 +1,65 @@
+<suite name="Opencart Application Test Regression Suite" verbose="4"
+	thread-count="5" parallel="tests">
+
+	<listeners>
+		<listener
+			class-name="com.aventstack.chaintest.plugins.ChainTestListener" />
+		<listener
+			class-name="com.qa.ecart.listeners.TestAllureListener" />
+
+		<listener
+			class-name="com.qa.ecart.listeners.AnnotationTransformer" />
+	</listeners>
+
+	<test name="Login Page Test">
+		<parameter name="browser" value="chrome" />
+
+		<classes>
+			<class name="com.qa.ecart.tests.LoginPageTest" />
+		</classes>
+	</test>
+
+	<test name="Accounts Page Test">
+		<parameter name="browser" value="firefox" />
+
+		<classes>
+			<class name="com.qa.ecart.tests.AccountPageTest" />
+		</classes>
+	</test>
+
+<test name="AdHoc Test">
+		<parameter name="browser" value="firefox" />
+
+		<classes>
+			<class name="com.qa.ecart.tests.AdhocTests" />
+		</classes>
+	</test>
+
+	<test name="Search Page Test">
+		<parameter name="browser" value="safari" />
+
+		<classes>
+			<class name="com.qa.ecart.tests.SearchProductTest" />
+		</classes>
+	</test>
+
+	<test name="ProductInfo Page Test">
+
+		<parameter name="browser" value="chrome" />
+
+		<classes>
+			<class name="com.qa.ecart.tests.ProductInfoTest" />
+		</classes>
+	</test>
+
+	<test name="Register Page Test">
+		<parameter name="browser" value="firefox" />
+
+		<classes>
+			<class name="com.qa.ecart.tests.RegisterPageTest" />
+		</classes>
+	</test>
+
+
+</suite>	
+

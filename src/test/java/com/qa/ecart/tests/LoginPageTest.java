@@ -46,6 +46,7 @@ public class LoginPageTest extends baseTestclass {
         String actTitle = loginPage.getLoginpageTitle();
         
         ChainTestListener.log("Login Page Title is: " + actTitle);
+        
         Assert.assertEquals(actTitle,AppConstants.LOGIN_PAGE_TITLE);
     }
 
@@ -55,6 +56,7 @@ public class LoginPageTest extends baseTestclass {
     public void getLoginURL() {
 
         String actURL = loginPage.getLoginpageURL();
+        
         Assert.assertTrue(actURL.contains(AppConstants.LOGIN_PAGE_FRURL));
     
 

@@ -9,31 +9,17 @@ import com.qa.base.baseTestclass;
 public class SearchProductTest extends baseTestclass {
 	
 	@BeforeClass
-
-	public void searchProductSetup(){
-			
-		accPage = loginPage.justLogin(prop.getProperty("username"),prop.getProperty("password"));
-	
+	public void searchProductSetup() {
+		accPage = loginPage.justLogin(prop.getProperty("username"), prop.getProperty("password"));
 	}
 
 	@Test
-	
 	public void searchProductTest() {
+		searchResultsPage = accPage.searchProduct("MacBook");
+		productPage = searchResultsPage.selectProduct("MacBook");
 		
-<<<<<<< HEAD
-		searchResultsPage=accPage.searchProduct("MacBook");
-		
-		productPage=searchResultsPage.selectProduct("MacBook");
-=======
-		SearchResultsPage=accPage.searchProduct("MacBook");
-		
-		productPage=SearchResultsPage.selectProduct("MacBook");
->>>>>>> 9e6b561aa016b1604d8bd139bc9b311790e43c59
-		
-		String productHeader=productPage.getProductHeader();
-		
-		Assert.assertEquals(productHeader,"MacBook");
-		
+		String productHeader = productPage.getProductHeader();
+		Assert.assertEquals(productHeader, "MacBook");
 	}
 	
 }

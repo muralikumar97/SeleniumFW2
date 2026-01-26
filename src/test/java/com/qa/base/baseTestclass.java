@@ -2,12 +2,6 @@ package com.qa.base;
 
 import java.util.Properties;
 
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 9e6b561aa016b1604d8bd139bc9b311790e43c59
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -28,18 +22,14 @@ import com.qa.ecart.pages.searchResultsPage;
 import com.qa.ecart.factory.DriverFactory;
 import com.qa.ecart.listeners.TestAllureListener;
 
-@Listeners({ChainTestListener.class,TestAllureListener.class})
+@Listeners({ChainTestListener.class, TestAllureListener.class})
 public class baseTestclass {
 
     protected DriverFactory df;
     protected WebDriver driver;
     protected loginPage loginPage;   
     protected AccountPage accPage;
-<<<<<<< HEAD
-    protected searchResultsPage searchResultsPage;
-=======
-    protected searchResultsPage SearchResultsPage;
->>>>>>> 9e6b561aa016b1604d8bd139bc9b311790e43c59
+    protected searchResultsPage searchResultsPage;  // fixed naming
     protected ProductInfoPage productPage;
     protected WishListPage wishlistPage;
     protected RegisterPage registerPage;
@@ -47,7 +37,7 @@ public class baseTestclass {
     
     @Parameters({"browser"})
     @BeforeTest
-    public void testSetUp(@Optional("chrome") String browserName){
+    public void testSetUp(@Optional("chrome") String browserName) {
 
         df = new DriverFactory();   
         prop = df.initProp();
@@ -61,21 +51,14 @@ public class baseTestclass {
     }
     
     @AfterMethod
-	public void attachScreenshot(ITestResult result)
-	{
-		if(!result.isSuccess())
-
-		{
-			ChainTestListener.embed(DriverFactory.getScreenshotAsFile(), "image/png");
-			
-		}
-		
-	}
-	
-	@AfterTest
-	public void tearDown()
-	{
-		driver.quit();
-		
-	}
+    public void attachScreenshot(ITestResult result) {
+        if(!result.isSuccess()) {
+            ChainTestListener.embed(DriverFactory.getScreenshotAsFile(), "image/png");
+        }
+    }
+    
+    @AfterTest
+    public void tearDown() {
+        driver.quit();
+    }
 }

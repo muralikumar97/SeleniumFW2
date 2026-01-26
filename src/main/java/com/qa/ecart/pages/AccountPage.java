@@ -3,7 +3,6 @@ package com.qa.ecart.pages;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
-<<<<<<< HEAD
 import org.apache.logging.log4j.Logger;
 
 import org.openqa.selenium.By;
@@ -11,19 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.qa.ecart.utils.AppConstants;
-=======
-
-import org.apache.logging.log4j.Logger;
-
-import org.openqa.selenium.By;
-
-import org.openqa.selenium.WebDriver;
-
-import org.openqa.selenium.WebElement;
-
-import com.qa.ecart.utils.AppConstants;
-
->>>>>>> 9e6b561aa016b1604d8bd139bc9b311790e43c59
 import com.qa.ecart.utils.ElementUtil;
 
 public class AccountPage {
@@ -31,23 +17,11 @@ public class AccountPage {
     private static final Logger log = LogManager.getLogger(AccountPage.class);
 
     private By accheaders = By.tagName("h2");
-<<<<<<< HEAD
     private final By logoutExit = By.linkText("Logout"); // Logout Link
     private final By searchBar = By.name("search");
     private final By searchOption = By.xpath("//div[@id='search']//button");
 
     private WebDriver driver;
-=======
-    
-    private final By logoutExit = By.linkText("Logout"); // Logout Link
-    
-    private final By searchBar = By.name("search");
-    
-    private final By searchOption = By.xpath("//div[@id='search']//button");
-
-    private WebDriver driver;
-    
->>>>>>> 9e6b561aa016b1604d8bd139bc9b311790e43c59
     private ElementUtil elutil;
 
     // Public page class constructor
@@ -60,7 +34,6 @@ public class AccountPage {
         return elutil.getElementsTextList(accheaders);
     }
 
-<<<<<<< HEAD
     // Updated method for logout check
     public boolean isLogoutLinkPresent() {
         return elutil.isElementDisplayed(logoutExit);
@@ -78,36 +51,12 @@ public class AccountPage {
         el.clear();
         el.sendKeys(searchItem);
 
-=======
-    public boolean LogoutExist() {
-    	
-        boolean flag = elutil.isElementDisplayed(logoutExit);
-        
-        return flag;
-    }
-
-    public searchResultsPage searchProduct(String searchItem) {
-
-        log.info("Product to be searched is " + searchItem);
-
-        WebElement el = elutil.waitForElementPresence(searchBar,AppConstants.DEFAULT_SHORT_TIME);
-
-        el.clear();
-        
-        el.sendKeys(searchItem);
-        
->>>>>>> 9e6b561aa016b1604d8bd139bc9b311790e43c59
         elutil.doClick(searchOption);
 
         return new searchResultsPage(driver);
     }
-<<<<<<< HEAD
-    
+
     public String getAccountPageTitle() {
         return driver.getTitle();
     }
-
-    
-=======
->>>>>>> 9e6b561aa016b1604d8bd139bc9b311790e43c59
 }

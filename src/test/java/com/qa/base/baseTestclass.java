@@ -4,7 +4,10 @@ import java.util.Properties;
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9e6b561aa016b1604d8bd139bc9b311790e43c59
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -32,7 +35,11 @@ public class baseTestclass {
     protected WebDriver driver;
     protected loginPage loginPage;   
     protected AccountPage accPage;
+<<<<<<< HEAD
     protected searchResultsPage searchResultsPage;
+=======
+    protected searchResultsPage SearchResultsPage;
+>>>>>>> 9e6b561aa016b1604d8bd139bc9b311790e43c59
     protected ProductInfoPage productPage;
     protected WishListPage wishlistPage;
     protected RegisterPage registerPage;

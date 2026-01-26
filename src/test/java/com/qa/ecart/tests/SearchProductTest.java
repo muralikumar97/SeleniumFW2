@@ -20,9 +20,15 @@ public class SearchProductTest extends baseTestclass {
 	
 	public void searchProductTest() {
 		
+<<<<<<< HEAD
 		searchResultsPage=accPage.searchProduct("MacBook");
 		
 		productPage=searchResultsPage.selectProduct("MacBook");
+=======
+		SearchResultsPage=accPage.searchProduct("MacBook");
+		
+		productPage=SearchResultsPage.selectProduct("MacBook");
+>>>>>>> 9e6b561aa016b1604d8bd139bc9b311790e43c59
 		
 		String productHeader=productPage.getProductHeader();
 		

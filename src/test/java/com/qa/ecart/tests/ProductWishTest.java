@@ -1,9 +1,14 @@
 package com.qa.ecart.tests;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9e6b561aa016b1604d8bd139bc9b311790e43c59
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+<<<<<<< HEAD
 import com.qa.base.baseTestclass;
 import com.qa.ecart.pages.loginPage;
 import com.qa.ecart.pages.searchResultsPage;   
@@ -45,3 +50,52 @@ public class ProductWishTest extends baseTestclass {
         action.moveToElement(WishAlert).click().perform();
     }
 }
+=======
+
+import com.qa.base.baseTestclass;
+
+public class ProductWishTest extends baseTestclass {
+
+    @BeforeClass
+    public void ProductInfoSetup() {
+        accPage = loginPage.justLogin("rah.kashyap87@ymail.com", "Ace2three@123");
+    }
+
+    @Test
+    public void wishProductTest() throws InterruptedException {
+        SearchResultsPage = accPage.searchProduct("MacBook Pro");
+        productPage = SearchResultsPage.selectProduct("MacBook Pro");
+
+        productPage.AddProdWish(); 
+
+        Thread.sleep(6000); 
+
+        Assert.assertTrue(productPage.getAlertText().contains("Success: You have added"));
+    }
+
+    @Test
+    public void clickAlertWish() throws InterruptedException {
+        SearchResultsPage = accPage.searchProduct("MacBook Pro");
+        productPage = SearchResultsPage.selectProduct("MacBook Pro");
+
+        productPage.AddProdWish(); 
+
+        Thread.sleep(4000); 
+        
+        WebElement WishAlert = productPage.getAlertLink(); 
+
+        Actions action = new Actions(driver);
+        action.moveToElement(WishAlert).click().perform(); 
+        
+        
+
+    // ---------------- Optional / commented tests left as-is ----------------
+    // @Test
+    // public void addCartDisplay() { ... }
+    // @Test
+    // public void reviewLinkDisplay() { ... }
+    // @Test
+    // public void quantityBoxDisplay() { ... }
+
+}}
+>>>>>>> 9e6b561aa016b1604d8bd139bc9b311790e43c59

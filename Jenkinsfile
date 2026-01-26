@@ -4,7 +4,7 @@ pipeline
     
     tools{
         maven 'maven'
-        }
+    }
 
     stages 
     {
@@ -13,7 +13,7 @@ pipeline
             steps
             {
                  git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-                 bat "mvn -Dmaven.test.failure.ignore=true clean package"
+                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
             }
             post 
             {
@@ -25,30 +25,21 @@ pipeline
             }
         }
         
-        
-        
         stage("Deploy to QA"){
             steps{
                 echo("deploy to qa done")
             }
         }
         
-        
-        
-                
         stage('Regression Automation Tests') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    git 'https://github.com/muralikumar97/Ecart-SeleniumFW'
-                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regression.xml"
-                    
+                    git 'https://github.com/muralikumar97/SeleniumFW2'
+                    sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regression.xml"
                 }
             }
         }
-            
-
-                
-     
+        
         stage('Publish Allure Reports') {
            steps {
                 script {
@@ -57,12 +48,11 @@ pipeline
                         jdk: '',
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
-                        results: [[path: '/allure-results']]
+                        results: [[path: 'allure-results']]
                     ])
                 }
             }
         }
-        
         
         stage('Publish ChainTest HTML Report'){
             steps{
@@ -85,14 +75,11 @@ pipeline
         stage('Sanity Automation Test') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    git 'https://github.com/muralikumar97/Ecart-SeleniumFW'
-                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=dev"
-                    
+                    git 'https://github.com/muralikumar97/SeleniumFW2'
+                    sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=dev"
                 }
             }
         }
-        
-        
         
         stage('Publish sanity ChainTest Report'){
             steps{
@@ -106,24 +93,19 @@ pipeline
             }
         }
         
-        
         stage("Deploy to PROD"){
             steps{
                 echo("deploy to PROD")
             }
         }
 
-
         stage('Sanity Automation Test on PROD') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    git 'https://github.com/testautomation093/August2025SeleniumAutomationFW.git'
-                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=prod"
-                    
+                    git 'https://github.com/muralikumar97/SeleniumFW2'
+                    sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=prod"
                 }
             }
         }
-        
-        
     }
 }
